@@ -1,12 +1,14 @@
 const express = require("express");
 const grid = express.Router();
-const {   getAllTasks,
-    getTask,
-    createTask,
-    deleteTask,
-    updateTask} = require("../queries/grid.js");
+const {
+  getAllTasks,
+  getTask,
+  createTask,
+  deleteTask,
+  updateTask,
+} = require("../queries/grid.js");
 
-const { checkTitle, checkDescription} = require("../validations/checkGrid.js")
+const { checkTitle, checkDescription } = require("../validations/checkGrid.js");
 
 grid.get("/", async (req, res) => {
   const allTasks = await getAllTasks();
@@ -31,7 +33,6 @@ grid.post("/", checkTitle, checkDescription, async (req, res) => {
   const task = await createTask(req.body);
   res.status(200).json(task);
 });
-
 
 grid.delete("/:id", async (req, res) => {
   const { id } = req.params;
