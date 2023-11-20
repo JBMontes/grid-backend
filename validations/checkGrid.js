@@ -10,7 +10,7 @@ const checkDescription = (req, res, next) => {
   if (req.body.description) {
     return next();
   } else {
-    res.status(400).json({ error: "Name is required" });
+    res.status(400).json({ error: "Description is required" });
   }
 };
 
